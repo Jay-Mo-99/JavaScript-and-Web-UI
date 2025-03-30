@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div id = "id-alert-box" class="id-alert-box"> 
+        <p id="alert-msg" class="alert-msg">Enter your ID</p>
+        <button id ="close-btn" class="close-btn">❌</button>
+    </div>
+
+
+    <button class ="id-btn" onclick="displayAlert('Enter your ID','block')">ID</button>
+    <button class ="pwd-btn" onclick="displayAlert('Enter your Password','block')">Password</button>
+
+    <script>
+
+
+        document.getElementById('close-btn').addEventListener('click', function(){
+            document.getElementById('id-alert-box').style.display = 'none';
+        });
+
+        function displayAlert(msg,param){
+            document.getElementById('alert-msg').innerHTML = msg;
+            document.getElementById('id-alert-box').style.display = param;
+        };
+
+        // function hiddenAlert(){
+        //     document.getElementById("alert-box").style.display = "none";
+        // };
+
+    </script>
+</body>
+</html>
