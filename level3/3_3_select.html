@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <title>Document</title>
+    </head>
+<body>
+    <form class="max-w-sm mx-auto m-4">
+        <p class = "block mb-2 text-sm font-medium text-gray-900">Select an Option</p>
+        <select 
+            class="select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option id="select-option1"value="cap">Cap</option> 
+            <option value="shirt">Shirt</option>
+            <option id="select-option3" value="pants">Pants</option>
+        </select>
+    </form>
+    <h1 id="test">Test</h1>
+    <form id ="form-shirt-color" class="form-shirt-color max-w-sm mx-auto hidden">
+        <p id = "select-label"class = "block mb-2 text-sm font-medium text-gray-900">Select Color</p>
+        <select 
+            id="select-color"
+            class="select-color bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option id="select-color-option1">Black</option>
+            <option id="select-color-option2">Brown</option>
+        </select>
+    </form>
+
+    <script>
+        let selected = document.querySelector('.select');
+        let selectColor = document.getElementById('select-color');
+        let prevOption = [];
+        for(let i = 0;i<selectColor.length;i++){
+            prevOption.push(selectColor[i]);
+        }
+        let pantsOption2 = document.createElement('option');
+        pantsOption2.innerHTML = "size 6";
+        let pantsOption3 = `<option>size 2</option>
+        <option>size 4</option>`;
+
+
+        
+        selected.addEventListener('change', function(){
+            if(this.value === "shirt"){
+                document.getElementById('form-shirt-color').classList.remove('hidden');
+                //Update HTML in select-color
+                document.getElementById('select-label').innerHTML = "Select a Color";
+                selectColor.innerHTML = "";
+                for(let i =0;i<prevOption.length;i++){
+                    selectColor.append(prevOption[i]);
+                }
+                
+            }else if(this.value ==="pants"){
+                document.getElementById('form-shirt-color').classList.remove('hidden');
+                //Update HTML element
+                document.getElementById('select-label').innerHTML = "Select a Size";
+                selectColor.innerHTML = pantsOption3;
+                selectColor.appendChild(pantsOption2);
+   
+            }else{
+                document.getElementById('form-shirt-color').classList.add('hidden');
+            }
+
+            
+        });
+
+        selected.onmouseover = function(){
+            document.getElementById('test').classList.add('text-red-500');
+        }
+        //Event Listener 
+        // selected.onchange = () =>{
+        //     if(selected.value === "shirt"){
+        //         document.querySelector('.form-shirt-color').classList.remove('hidden');
+        //     }else{
+        //         document.querySelector('.form-shirt-color').classList.add('hidden');
+        //     }
+        // };
+
+        //addEventListner 
+        let selectedColor = document.getElementById('select-color');
+        selectedColor.addEventListener('change',function(){
+            alert(this.value);
+        });
+
+        /**Create HTML in JS**/
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="card-group container flex">
+        <div class="card block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
+            <img class="mb-2" src="https://picsum.photos/seed/picsum/200/300">
+            <div class="card-body">
+                <h5 class="card-title-1 text-xl mb-1">Card title</h5>
+                <p class="card-price-1 text-sm mb-2">Price : 70000</p>
+                <button class="btn bg-red-400 text-white p-2 rounded-lg">ORDER NOW</button>
+            </div>
+        </div>
+        <div class="card block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
+            <img class="mb-2" src="https://picsum.photos/seed/picsum/200/300">
+            <div class="card-body">
+                <h5 class="card-title-2 text-xl mb-1">Card title</h5>
+                <p class="card-price-2 text-sm mb-2">Price : 70000</p>
+                <button class="btn bg-red-400 text-white p-2 rounded-lg">ORDER NOW</button>
+            </div>
+        </div>
+        <div class="card block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
+            <img class="mb-2" src="https://picsum.photos/seed/picsum/200/300">
+            <div class="card-body">
+                <h5 class="card-title-3 text-xl mb-1">Card title</h5>
+                <p class="card-price-3 text-sm mb-2">Price : 70000</p>
+                <button class="btn bg-red-400 text-white p-2 rounded-lg">ORDER NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var products = [
+            { id: 0, price: 70000, title: 'Blossom Dress' },
+            { id: 1, price: 50000, title: 'Springfield Shirt' },
+            { id: 2, price: 60000, title: 'Black Monastery' }
+        ];
+        
+        //Loop for data binding between products obj and card
+        for(let i=1;i<products.length+1;i++){
+            document.querySelector(`.card-title-${i}`).innerHTML = products[i-1].title;
+            document.querySelector('.card-price-'+CSS.escape(i)).innerHTML = 'Price: ' + products[i-1].price;
+        };
+    
+    </script>
+    
+
+</body>
+
+</html>

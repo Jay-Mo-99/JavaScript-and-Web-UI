@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <title>Document</title>
+    </head>
+<body>
+    
+</body>
+
+<script>
+    // //출석부
+    // var 출석부 = ['흥민', '영희', '철수', '철수'];
+    
+    //     function 이름찾기(param){
+    //         let value = "없어요";
+    //         출석부.forEach(function(e,i){
+    //             if(param === e){
+    //                 value = "있어요";
+    //             }
+    //         })
+    //         return value;
+    //     }
+    // 이름찾기("영희");
+    // 이름찾기("짱구");
+
+    ////구구단
+    // for(let i =2;i<10;i++){
+    //     for(let j =1; j<10;j++){
+    //         console.log(i*j);
+    //     }
+    // }
+
+    //평균점수 계산기 
+    function 함수(param1,param2){
+        let avg = 0;
+        param1.forEach(function(e,i){
+            avg += Number(e);
+        })
+        avg = avg / param1.length;
+        if(param2>avg){
+            return `평균보다 ${param2-avg}점이 올랐네요`
+        }else{
+            return `평균보다 ${avg-param2}점이 떨어졌네요`
+        }
+       
+
+    };
+
+    함수([2,4,5],1);
+
+</script>
+</html>

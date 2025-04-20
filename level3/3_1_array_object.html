@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="px-6 py-4">
+          <div class="card-title font-bold text-3xl mb-2"></div>
+          <div class="card-sub-title mb-2 text-lg font-semibold"><a class="card-price mr-2">$1111</a>|<a class="card-color ml-2">red</a></div>
+          <p class="text-gray-700 text-base mb-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+          </p>
+        </div>
+      </div>
+         
+    <script>
+        var carArr = ['sonata',80000,'apricot',1999];//Array 
+        carArr[0] = "soul"
+        
+        console.log(carArr.slice(2,4));
+        //alert(carArr[0]);//Indexing array for trach each elements. 
+
+        let carObj = {name:'matize',price:[90000,80000,70000],color:'black'};
+        let keyName = 'color';
+        //Object
+        //{key:value} type
+        //Key is just a name of value.
+        carObj[keyName] = "navy";
+        //alert(carObj.color);//Using Key for extraction the value. 
+
+        document.getElementsByClassName('card-title')[0].innerHTML = carObj.name;
+        document.getElementsByClassName('card-price')[0].innerHTML = carObj.price[0];
+        document.getElementsByClassName('card-color')[0].innerHTML = carObj.color;
+
+
+        //Array: Store values in order -> Using Index following in order (e.g. carArr[1]) 
+        // -> Sorting, Slicing 
+        //Obj: Key-Value type -> Using Key to extract/editing each values. (e.g. carObj.price = 9999) 
+
+        
+    </script>
+    
+</body>
+</html>

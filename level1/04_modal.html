@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes slideDown{
+            0%{
+                opacity: 0;
+                max-height:0;
+            }
+            50%{
+                opacity: 0;
+                max-height:10px;
+            }
+            100%{
+                opacity: 1;
+                max-height:500px;
+            }
+        }
+
+        @keyframes slideUp{
+            0%{
+                opacity: 1;
+                max-height:100px;
+            }
+            50%{
+                opacity: 1;
+                max-height:8px;
+            }
+            100%{
+                opacity: 0;
+                max-height:0px;
+            }
+        }
+        
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.7s ease-out forwards;
+        }
+
+        .animate-slideDown{
+            animation: slideDown 2s;
+        }
+
+        .animate-slideUp{
+            animation:slideUp 2s;
+        }
+
+    
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="modal 
+        hidden
+        
+        transition
+        duration-700
+        bg-blue-200 text-blue-400 p-4 m-4  flex justify-center">
+        <div class="p-4 m-4">
+            <h4>Please Login</h4>
+            <button class="btn-modal-close bg-gray-200 text-gray-400 rounded-md p-4 m-4" id="close">Close</button>
+        </div>
+    </div>
+    <button class="btn-modal-open bg-green-100 text-green-400 p-4 m-4 rounded-md">Open</button>
+    <button class="btn-modal-fade-down bg-pink-100 text-pink-400 p-4 m-4 rounded-md">Fade Left</button>
+    <button class="btn-modal-slide-down bg-purple-100 text-purple-400 p-4 m-4 rounded-md">Slide Down</button>
+    <button class="btn-modal-slide-up bg-purple-400 text-purple-100 p-4 m-4 rounded-md">Slide UP</button>
+    <!--Last Part of JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+      
+    <script>
+        $('.btn-modal-open').click(() => {
+            $('.modal').removeClass('hidden');
+            setTimeout(() => {
+                $('.modal').removeClass('opacity-0');
+                $('.modal').addClass('opacity-100');
+            }, 10);
+        });
+
+        $('.btn-modal-close').click(() => {
+            $('.modal').addClass('opacity-0');
+            $('.modal').removeClass('opacity-100');
+            setTimeout(() => {
+                $('.modal').addClass('hidden');
+            }, 500);
+        });
+
+        //Fade down button
+        document.getElementsByClassName('btn-modal-fade-down')[0].addEventListener('click', () => {
+            const modal = document.getElementsByClassName('modal')[0];
+            modal.classList.remove("hidden");
+
+            setTimeout(() => {
+
+                modal.classList.add('animate-fadeInLeft');
+            },10);
+        });
+
+        //Slide Down Button
+        $('.btn-modal-slide-down').click(() => {
+            $('.modal').removeClass('animate-slideUp');
+            setTimeout(() => {
+                $('.modal').removeClass('hidden');
+                $('.modal').addClass('animate-slideDown');
+            },50);
+        });
+
+        //Slide Up Button
+        $('.btn-modal-slide-up').click(()=>{
+            $('.modal').addClass('animate-slideUp');
+
+            setTimeout(()=>{
+                $('.modal').removeClass('animate-slideDown');
+                $('.modal').addClass('hidden');
+            },500);
+        
+        });
+
+    </script>
+</body>
+
+</html>
