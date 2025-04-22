@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row m-3 p-3">
+           
+        </div>
+        <button id= "card-btn"class="p-3 bg-red-400 text-white rounded-lg">See Details</button>
+      </div> 
+     
+
+
+    <script>
+        var products = [
+            { id: 0, price: 70000, title: 'Blossom Dress' },
+            { id: 1, price: 50000, title: 'Springfield Shirt' },
+            { id: 2, price: 60000, title: 'Black Monastery' }
+        ];
+
+        let cardUi = `<div class="col-sm-4">
+                    <img src="https://placehold.co/600" class="w-100">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-price">Price : 70000</p>
+                </div>`;
+        //Create cardUi html element based on the products
+        products.forEach(function(e){
+            //Create UI
+            document.querySelector('.row').insertAdjacentHTML('beforeend',cardUi);
+            //Update Title
+            document.getElementsByClassName('card-title')[e.id].innerHTML = e.id+1 + "." + e.title;
+            //Update Price
+            document.getElementsByClassName('card-price')[e.id].innerHTML = e.price;
+        });
+        let clickNumber = 0;
+        let lastIndex = 0;
+        console.log(products.length);
+        document.getElementById('card-btn').addEventListener('click',function(){
+            clickNumber ++;//Update Click Count
+            console.log(clickNumber);
+            let firstAddress = 'https://codingapple1.github.io/js/more1.json';
+            let secondAddress = 'https://codingapple1.github.io/js/more2.json';
+            function fetchData(address){
+                fetch(address)
+                .then(res => res.json())
+                .then(data => {
+                    products.push(...data);
+                    console.log(data.length);
+                    data.forEach(function(e,i){
+                        //Create UI 
+                        document.querySelector('.row').insertAdjacentHTML('beforeend',cardUi);
+                        //Update Title
+                        document.getElementsByClassName('card-title')[e.id].innerHTML = e.id+1 + "." + e.title;
+                        //Update Price
+                        document.getElementsByClassName('card-price')[e.id].innerHTML = e.price;
+                    })
+
+                })
+            };
+            
+            //Get First API DATA
+            if(clickNumber === 1){
+                fetchData(firstAddress);
+            }
+            //GET second API data if user click 2 times
+           else if(clickNumber===2){
+                fetchData(secondAddress);
+                document.getElementById('card-btn').style.display = "none";
+            }
+        });
+
+
+
+        
+
+   
+    
+        fetch('https://codingapple1.github.io/price.json')
+        .then(res => res.json()) //Convert json to object
+        .then(real =>{
+            console.log(real);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
+
+    </script>
+    
+
+</body>
+
+</html>
