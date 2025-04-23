@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row m-3 p-3">
+           
+        </div>
+        <button id= "card-btn"class="p-3 bg-red-400 text-white rounded-lg">See Details</button>
+        <button id= "card-btn-sort"class="p-3 bg-yellow-400 text-white rounded-lg">Sort Price</button>
+        <button id= "card-btn-sort-title"class="p-3 bg-blue-400 text-white rounded-lg">Sort Title (DES)</button>
+        <button id= "card-btn-filter"class="p-3 bg-green-400 text-white rounded-lg">Less Than 60000</button>
+    </div> 
+     
+
+
+    <script>
+        var products = [
+            { id: 0, price: 70000, title: 'Blossom Dress' },
+            { id: 1, price: 50000, title: 'Springfield Shirt' },
+            { id: 2, price: 60000, title: 'Black Monastery' }
+        ];
+
+        document.getElementById('card-btn-sort').addEventListener("click",function(){
+            //Sort by price 
+            products.sort(function(a,b){
+                
+                return a.price - b.price;
+            })
+            products.forEach(function(e,i){
+                //Update Title
+                document.getElementsByClassName('card-title')[i].innerHTML = e.id+1 + "." + e.title;
+                //Update Price
+                document.getElementsByClassName('card-price')[i].innerHTML = e.price;
+            });
+        });
+
+        document.getElementById('card-btn-sort-title').addEventListener("click",function(){
+            products.sort(function(a,b){
+                if(b.title>a.title) return 1; //b.title이 크면 왼쪽, a.title이 작으면 오른쪽
+                else if(b.title<a.title) return -1;//b.title이 작으면 오른쪽, a.title이 크면 왼쪽
+                else if(b.title === a.title) return 0;
+                //내림차순은 큰->작 
+            })
+            products.forEach(function(e,i){
+                //Update Title
+                document.getElementsByClassName('card-title')[i].innerHTML = e.id+1 + "." + e.title;
+                //Update Price
+                document.getElementsByClassName('card-price')[i].innerHTML = e.price;
+            });
+        });
+
+        
+        document.getElementById('card-btn-filter').addEventListener("click",function(){
+            newPro = products.filter(function(e){
+                return e.price<=60000
+
+            });
+            //Initialize the row element 
+            document.getElementsByClassName('row')[0].innerHTML = "";
+            newPro.forEach(function(e,i){
+                    //Create UI
+                    document.querySelector('.row').insertAdjacentHTML('beforeend',cardUi);
+                    //Update Title
+                    document.getElementsByClassName('card-title')[i].innerHTML = e.id+1 + "." + e.title;
+                    //Update Price
+                    document.getElementsByClassName('card-price')[i].innerHTML = e.price;
+            });
+        });
+
+        let cardUi = `<div class="col-sm-4">
+                    <img src="https://placehold.co/600" class="w-100">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-price">Price : 70000</p>
+                </div>`;
+        //Create cardUi html element based on the products
+        products.forEach(function(e,i){
+            //Create UI
+            document.querySelector('.row').insertAdjacentHTML('beforeend',cardUi);
+            //Update Title
+            document.getElementsByClassName('card-title')[i].innerHTML = e.id+1 + "." + e.title;
+            //Update Price
+            document.getElementsByClassName('card-price')[i].innerHTML = e.price;
+        });
+
+
+
+
+        let a = ["cherry","durian","apple","banana","kiwi"];
+        a.reverse();
+        console.log(a);
+
+
+        var arr = [10,787,1,5,108];
+        newArr = arr.map(function(e){
+           return e*100;
+        })
+        console.log(newArr);
+        // newArr = arr.filter(function(a){
+        //     return a>50;
+        // })
+        // console.log(newArr);
+
+        var array2 = ["a","z","k","e","d"];
+        array2.sort().reverse();
+        console.log(array2);
+
+        var 어레이 = ['다', '가', '나'];
+        어레이.sort();
+
+        어레이.reverse();
+
+
+
+    </script>
+    
+
+</body>
+
+</html>
